@@ -85,22 +85,21 @@ int Ball::isVacant(int x1,int y1,Ball ball[]){
 
 void Ball::placeBallRandomly(Ball &curBall,Ball ball[]){
 	int ct=0;
-	//printf("HERE9999!!!\n\n\n");
+
 	while(1){
 		ct++;
-		//printf("HERE9999!!!\n\n\n");
+
 		int st=EXTRA_WIDTH+WALL_WIDTH+curBall.r+2;
 		if(foulInBreak)st=EXTRA_WIDTH+gBoardTexture.getWidth()*3.0/4.0;
 		int x1=getRandom(st,SCREEN_WIDTH-WALL_WIDTH-curBall.r-2);
 		int y1=getRandom(EXTRA_HEIGHT+WALL_WIDTH+curBall.r+2,SCREEN_HEIGHT-WALL_WIDTH-curBall.r-2);
-		//if(!first_touch_in_break&&x1<)x1=EXTRA_WIDTH+gBoardTexture.getWidth()*3.0/4.0;
-		//printf("r ST X Y : %d %d %d %d %lf\n",ball[0].r,st,x1,y1,EXTRA_WIDTH+gBoardTexture.getWidth()*3.0/4.0);
+
 		if(isVacant(x1,y1,ball)){
 			curBall.init(x1,y1,id);
 			break;
 		}
 	}
-  //  printf("%d\n",ct);
+
 }
 
 void Ball::cueBallDrag(Ball &cueBall,SDL_Event &e,Ball ball[]){
@@ -123,7 +122,6 @@ void Ball::cueBallDrag(Ball &cueBall,SDL_Event &e,Ball ball[]){
 			SDL_GetMouseState(&x1,&y1);
 
 			if(isVacant(x1,y1,ball)){
-				//cue_ball.init(x1,y1,0);
 				if(!foulInBreak||x1>=EXTRA_WIDTH+gBoardTexture.getWidth()*3.0/4.0)x=x1;
 				y=y1;
 			}
@@ -177,7 +175,6 @@ void Ball::handle2DCollision(Ball &ball1,Ball &ball2,Ball ball[]){
 
 		Ball b1=ball1,b2=ball2;
 		double angle = atan2(dball.y,dball.x);
-		//double sin = sin(angle), cos = cos(angle);
 		double dx=dball.x,dy=dball.y;
 
 		double x1 = 0, y1 = 0;
@@ -190,8 +187,8 @@ void Ball::handle2DCollision(Ball &ball1,Ball &ball2,Ball ball[]){
 		double vy2 = ball2.vely*cos(angle)-ball2.velx*sin(angle);
 
 		double vx1final,vx2final;
-		vx1final = vx2;//(2*b2.mass*vx2)/(b1.mass+b2.mass);
-		vx2final = vx1;//(2*b1.mass*vx1)/(b1.mass+b2.mass);
+		vx1final = vx2;
+		vx2final = vx1;
 		vx1 = vx1final;
 		vx2 = vx2final;
 
@@ -278,18 +275,15 @@ void Ball::move(Ball ball[]){
 		if(mg>1)break;
 		point p={x+mg*velx,y+mg*vely};
 		if(p.y-r<EXTRA_HEIGHT+WALL_WIDTH||p.y+r>SCREEN_HEIGHT-WALL_WIDTH-EXTRA_HEIGHT_END){
-			//if(p.x<415||p.x>460){
 				inc=mg;
-				//printf("TRIGGERED\n\n\n\n");
 				break;
-			//}
 		}
 		if(p.x-r<EXTRA_WIDTH+WALL_WIDTH+2||p.x+r>SCREEN_WIDTH-WALL_WIDTH-EXTRA_WIDTH_END-4){
 			inc=mg;
 			break;
 		}
 		int done=0;
-	   // if(!is_break_done&&p.x>70&&p.x<300&&p.y>100+EXTRA_HEIGHT&&p.y<270+EXTRA_HEIGHT)continue;
+
 		for(int ballId=0;ballId<16;ballId++){
 			if(ballId==id)continue;
 			if(dist(p,{ball[ballId].x,ball[ballId].y})<r+r){

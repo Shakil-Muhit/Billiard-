@@ -188,8 +188,7 @@ void ballScoreLogic8ball(int id){
 	else if(id==8){
 		int tp=playerType[curPlayer];
 		if(totalScored[tp]!=7)gameLoser=curPlayer;
-		ballsQueue[queueLen++]=id;
-		//else game_winner=cur_player^1;
+		ballsQueue[queueLen++]=id;;
 	}
 	else {
 		if(isBreakDone&&playerType[curPlayer]==-1){

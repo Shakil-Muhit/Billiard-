@@ -48,8 +48,6 @@ static Button menuButton,returnButton;
 
 void initAll9ball(){
 	isTriggered=0;
-	//player_name[0]="Player 1";
-	//player_name[1]="Player 2";
 	anyBallScored=0;
 	ball9Scored=0;
 	for(int i=0;i<10;i++)playerName[0][i]=player1[i];
@@ -94,10 +92,7 @@ void initAll9ball(){
 	ball[14].init(-100,-100,14);
 	ball[15].init(-100,-100,15);
 
-	//ball_type[0]=ball_type[8]=-2;
 	for(int ballId=0;ballId<=9;ballId++)ballType[ballId]=ballId;
-	//for(int ball_id=9;ball_id<16;ball_id++)ball_type[ball_id]=1;
-
 
 	cue.init(ball[0].x-gCueTexture.getWidth()/2,ball[0].y-gCueTexture.getHeight()/2,{ball[0].x,ball[0].y});
 	cueTrigger.height=gCueTriggerTexture.getHeight();
@@ -203,14 +198,6 @@ void shotLogic9ball(){
 
 void gameWinLogic9ball(){
 	if(ball[9].isInsidePocket){
-		//if(game_loser!=-1){
-			//game_winner=game_loser^1;
-		//}
-		//else {
-			//if(first_touch!=8||cue_ball_scored)game_winner=cur_player^1;
-			//else game_winner=cur_player;
-		//}
-	  //  printf("TOT %d %d\n",total_scored[0],total_scored[1]);
 		gameWinner=curPlayer;
 		gameLoser=curPlayer^1;
 	    if(isFoul){

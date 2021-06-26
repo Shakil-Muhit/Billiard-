@@ -1,0 +1,59 @@
+#ifndef CONSTS_H
+#define CONSTS_H
+#include <math.h>
+
+const int SCREEN_WIDTH = 1200;
+const int SCREEN_HEIGHT = 705;
+const int TABLE_HEIGHT=384;
+const int TABLE_WIDTH=723;
+const int WALL_WIDTH = 35;
+const int EXTRA_HEIGHT= 206;
+const int EXTRA_WIDTH= 88+147;
+const int EXTRA_HEIGHT_END=SCREEN_HEIGHT-(TABLE_HEIGHT+EXTRA_HEIGHT);
+const int EXTRA_WIDTH_END=SCREEN_WIDTH-(TABLE_WIDTH+EXTRA_WIDTH);
+const int MAX_TIME=30;
+const int QUIT_GAME= -1;
+const int DEFAULT_USER_ID=-1;
+const int MAIN_MENU_WINDOW=1;
+const int PLAY_MENU_WINDOW=2;
+const int MODE_8BALL_WINDOW=3;
+const int MODE_9BALL_WINDOW=4;
+const int MODE_REPLICATION_WINDOW=5;
+const int MODE_BTC_WINDOW=6;
+const int LEADERBOARD_WINDOW=7;
+const int LEADERBOARD_REPLICATION_WINDOW=8;
+const int LEADERBOARD_BTC_WINDOW=9;
+const int PAUSE_MENU_WINDOW=10;
+const int LOGIN_MENU_WINDOW=11;
+const int HELP_MENU_WINDOW=12;
+const int INTRODUCTION_MENU_WINDOW=13;
+const int CONTROLS_MENU_WINDOW=14;
+const int RULES_MENU_WINDOW=15;
+const int RULES_8BALL_MENU_WINDOW=16;
+const int RULES_9BALL_MENU_WINDOW=17;
+const int RULES_BTC_MENU_WINDOW=18;
+const int RULES_REPLICATION_MENU_WINDOW=19;
+const int LEADERBOARD_SIZE=8;
+const int USER_LIMIT=100;
+const int BUTTON_FRAME_COUNT=4;
+const int BTC_INITIAL_TIME=150000;
+const int BTC_BALL_POINTS_SCALE=1;
+const int TEXT_INPUT_LIMIT=8;
+const int TOTAL_FAILURE_TEXTS=5;
+const int F_HANDLE_NOT_FOUND=0;
+const int F_HANDLE_EXISTS=1;
+const int F_PASSWORD=2;
+const int F_COLLIDE=3;
+const int F_EMPTY=4;
+const int TOTAL_TIPS=2;
+const int T_DRAG=0;
+const int T_TOGGLE=1;
+const double PI=acos(-1.0);
+const double RESTITUTION_COEFFICIENT=0.9;
+const double EPS=1e-9;
+const double MAX_VELOCITY=16;
+const double MAX_CUE_SHIFT=100;
+const double WALL_FRICTION=0.2;
+const double AIMLINE_SCALE=1.4;
+
+#endif

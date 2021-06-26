@@ -12,8 +12,6 @@ point rotate(point p,double x){
 	return {p.x*cos(x)-p.y*sin(x),p.y*cos(x)+p.x*sin(x)};
 }
 
-
-
 Vec tovec(point a,point b){         // convert 2 points to vector a->b
     return Vec(b.x-a.x,b.y-a.y);
 }

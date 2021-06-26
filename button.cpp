@@ -31,16 +31,12 @@ void Button::init(int i,int j,LTexture &tex,int tar){
 int Button::isMouseInside(){
 	int x1,y1;
 	SDL_GetMouseState(&x1,&y1);
-	//if(x1<x||x1>x+width||y1<y||y1>y+height)return 0;
 	if(distanceSquared(x,y,x1,y1)>r*r)return 0;
 	return 1;
 }
 
 void Button::handleButtonEvent(SDL_Event &e){
-
-
 	if(e.type== SDL_MOUSEBUTTONDOWN && isMouseInside()){
-		//prev_window_mode=-1;
 		windowMode=targetWindow;
 	}
 }

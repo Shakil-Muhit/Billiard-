@@ -15,7 +15,6 @@
 #include "include/table.h"
 #include "include/window_handler.h"
 #include "include/leaderboard_btc.h"
-//#include "include/input_text.h"
 #include "include/game_end_text.h"
 #include "include/modified_ball.h"
 #include "include/button.h"
@@ -95,7 +94,6 @@ void initAllBtc(){
 	isGameOver=0;
 	isNameTaken=0;
 	isWon=1;
-	//balls_revealed=8;
 	magnitude=0;
 	elapsedDuration=0;
 	consecutiveMiss=0;
@@ -106,8 +104,6 @@ void initAllBtc(){
 	curPenaltyBall=curRewardBall=0;
 
 	initPockets();
-
-	//ball[0].init( gBallsTexture[0].getWidth() / 2+500, 191+EXTRA_HEIGHT,0);
 	initSeed();
 
 	for(int ballId=0;ballId<16;ballId++){
@@ -121,14 +117,11 @@ void initAllBtc(){
 	cueTrigger.height=gCueTriggerTexture.getHeight();
 	cueTrigger.width=gCueTriggerTexture.getWidth();
 
-	//cue_hover.init(115,(94+gTextPlayerTexture[0].getHeight())/2,582,(94+gTextPlayerTexture[1].getHeight())/2);
-	//init_leaderboard_replication();
 	initLeaderboardBtc();
 	menuButton.init(48,46,gButtonMenuTexture,PAUSE_MENU_WINDOW);
 	returnButton.init(1115,615,gButtonReturnTexture,MAIN_MENU_WINDOW);
 
 	timer.start();
-	//init_text_input();
 	initModifiedBall();
 	if( Mix_PausedMusic() == 0 )
 	{
@@ -147,11 +140,7 @@ void handleEventBtc(SDL_Event& e){
 	if(!trigger1&&trigger2){
 		ball[0].setVectorVelocity(cue.currentDirection,magnitude);                        //printf("MAGNITUDE : %d\n",magnitude);
 	}
-	//if(is_game_over&&is_won&&!is_name_taken&&is_eligible_leaderboard_btc(elapsed_duration)){
-		//is_name_taken=handle_event_text_input(e);
-		//SDL_Color textColor = { 0, 0, 0, 0xFF };
-		//load_text_input(textColor);
-	//}
+
 	handleEventModifiedBall(e);
 	if(isGameOver)returnButton.handleButtonEvent(e);
 }
@@ -174,7 +163,6 @@ void gameWinLogicBtc(){
 		isGameOver=1;
 		isWon=1;
 		elapsedDuration=timer.getTicks();
-		//format_time(duration_left,total_duration-elapsed_duration);
 		toString((totalDuration-elapsedDuration)/1000,durationLeft);
 	}
 }
@@ -210,17 +198,12 @@ void renderAllBtc(){
 	else if(isWon && !isEligibleLeaderboardBtc(elapsedDuration))gameEndText(isWon);
 
 	if(isGameOver && isWon && isEligibleLeaderboardBtc(elapsedDuration)){
-		//gNameInputTexture.render((SCREEN_WIDTH-gNameInputTexture.getWidth()+50)/2,(SCREEN_HEIGHT-gNameInputTexture.getHeight())/2);
-		//gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2, SCREEN_HEIGHT/2 );
 		if(!isLeaderboardUpdated){
-			//prev_window_mode=-1;
-			//window_mode=MAIN_MENU_WINDOW;
 			updateLeaderboardBtc(userHandle[0],durationLeft,totalDuration-elapsedDuration);
 			isLeaderboardUpdated=1;
 		}
 	}
-	//render_time();
-	//declare_winner();
+
 	menuButton.render(gButtonMenuTexture,0);
 	gTextPlayerTexture[0].render(1180-gTextPlayerTexture[0].getWidth(),15);
 	//Update screen
@@ -252,10 +235,6 @@ void renderAllBtc(){
 		}
 		showEffectSpan--;
 	}
-	//int x1= 1055,y1=60;
-	//int w1= gModifiedBallsTexture[2].getWidth();
-			//gModifiedBallsTexture[2].render(x1,y1);
-			//gTextPenaltytexture.render(x1+w1+10,y1);
 
 	SDL_RenderPresent( gRenderer );
 }
@@ -307,7 +286,7 @@ void newShotLogicBtc(){
 			applyPenalty(10);
 		}
 	}
-	//printf("%d %d\n",consecutive_miss,consecutive_score);
+
 	anyBallScored=0;
 	gameWinLogicBtc();
 }

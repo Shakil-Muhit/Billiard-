@@ -21,11 +21,8 @@ int Textbox::isMouseInside(){
 void Textbox::init(int x1,int y1,int w,int h,char def[]){
 	x=x1;
 	y=y1;
-	//height=tex.getHeight();
-	//width=tex.getWidth();
 	height=h;
 	width= w;
-	//printf("%d %d\n",height,width);
 	renderText=1;
 	while(textLen){
 		textLen--;
@@ -66,17 +63,9 @@ void Textbox::handleEvent(SDL_Event& e){
 		{
 			SDL_SetClipboardText( inputText );
 		}
-		////Handle paste
-		//else if( e.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL )
-		//{
-			//inputText = SDL_GetClipboardText();
-			//text_len=0;
-			//while(inputText[text_len])text_len++;
-			//renderText = 1;
-		//}
+
 		else if( e.key.keysym.sym == SDLK_RETURN){
 			//Disable text input
-            //SDL_StopTextInput();
             onFocus= 0;
         }
 	}
@@ -103,7 +92,6 @@ void Textbox::render(SDL_Color textColor, TTF_Font *font, int isPassword){
 	if( textLen )
 	{
 		//Render new text
-		//printf("YES %d %d\n",x,y);
 		if(!isPassword)gInputTextTexture.loadFromRenderedText( inputText, textColor, font );
 		else {
 			char hiddenTxt[20];

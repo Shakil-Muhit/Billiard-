@@ -15,7 +15,6 @@
 #include "include/maths.h"
 #include "include/table.h"
 #include "include/window_handler.h"
-//#include "include/input_text.h"
 #include "include/leaderboard_replication.h"
 #include "include/game_end_text.h"
 #include "include/button.h"
@@ -87,7 +86,6 @@ void initAllReplication(){
 
 	initPockets();
 
-	//ball[0].init( gBallsTexture[0].getWidth() / 2+500, 191+EXTRA_HEIGHT,0);
 	initSeed();
 
 	for(int ballId=0;ballId<9;ballId++){
@@ -106,12 +104,10 @@ void initAllReplication(){
 	cueTrigger.height=gCueTriggerTexture.getHeight();
 	cueTrigger.width=gCueTriggerTexture.getWidth();
 
-	//cue_hover.init(115,(94+gTextPlayerTexture[0].getHeight())/2,582,(94+gTextPlayerTexture[1].getHeight())/2);
 	initLeaderboardReplication();
 	menuButton.init(48,46,gButtonMenuTexture,PAUSE_MENU_WINDOW);
 	returnButton.init(1115,615,gButtonReturnTexture,MAIN_MENU_WINDOW);
 	timer.start();
-	//init_text_input();
 	if( Mix_PausedMusic() == 0 )
 	{
 		Mix_PauseMusic();
@@ -129,11 +125,7 @@ void handleEventReplication(SDL_Event& e){
 	if(!trigger1&&trigger2){
 		ball[0].setVectorVelocity(cue.currentDirection,magnitude);
 	}
-	//if(is_game_over&&is_won&&!is_name_taken&&is_eligible_leaderboard_replication(elapsed_duration)){
-		//is_name_taken=handle_event_text_input(e);
-		//SDL_Color textColor = { 0, 0, 0, 0xFF };
-		//load_text_input(textColor);
-	//}
+
 	if(isGameOver)returnButton.handleButtonEvent(e);
 }
 
@@ -167,17 +159,11 @@ void renderAllReplication(){
 	else if(isWon && !isEligibleLeaderboardReplication(elapsedDuration))gameEndText(isWon);
 
 	if(isGameOver && isWon && isEligibleLeaderboardReplication(elapsedDuration)){
-		//gNameInputTexture.render((SCREEN_WIDTH-gNameInputTexture.getWidth()+50)/2,(SCREEN_HEIGHT-gNameInputTexture.getHeight())/2);
-		//gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2, SCREEN_HEIGHT/2 );
 		if(!isLeaderboardUpdated){
-			//prev_window_mode=-1;
-			//window_mode=MAIN_MENU_WINDOW;
 			updateLeaderboardReplication(userHandle[0],elapsedDurationText,elapsedDuration);
 			isLeaderboardUpdated=1;
 		}
 	}
-	//render_time();
-	//declare_winner();
 	menuButton.render(gButtonMenuTexture,0);
 	gTextPlayerTexture[0].render(1180-gTextPlayerTexture[0].getWidth(),15);
 	if(isFoul){

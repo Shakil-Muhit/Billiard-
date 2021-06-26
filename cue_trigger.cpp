@@ -37,10 +37,8 @@ void CueSpeedTrigger::handleEvent(SDL_Event& e,int &magnitude,int pauseTimerFlag
 	if( e.type== SDL_MOUSEBUTTONDOWN){
 		int x1,y1;
 		SDL_GetMouseState(&x1,&y1);
-		//printf("%d %d %d %d %d %d\n",x1,y1,x,y,height,width);
-		//printf("%d %d %d %d\n",is_triggered,is_game_over,is_foul,inside);
+
 		if(isInside(x1,y1)){
-			//printf("%d %d %d %d\n",is_triggered,is_game_over,is_foul,inside);
 			inside=1;
 		}
 	}
@@ -52,11 +50,8 @@ void CueSpeedTrigger::handleEvent(SDL_Event& e,int &magnitude,int pauseTimerFlag
 			isTriggered=1;
 			double tmp= MAX_VELOCITY*(double)((double)initX+(double)width-(double)x1)/(width);
 			magnitude=tmp;
-			//printf("DOUBLE MAGNITUDE: %lf\n%d\n%d\n%d\n",tmp,x1,init_x+width,width);
-		   // printf("%d\n%d\n",x+width-x1,x+width);
 			if(magnitude<1)magnitude=1;
 			if(magnitude>(int)MAX_VELOCITY)magnitude=(int)MAX_VELOCITY;
-			//printf("DOUBLE MAGNITUDE: %lf\n%d\n%d\n%d\n",magnitude,x1,init_x+width,width);
 			if(pauseTimerFlag)timer.pause();
 			cueShift=0;
 		}
@@ -68,9 +63,7 @@ void CueSpeedTrigger::handleEvent(SDL_Event& e,int &magnitude,int pauseTimerFlag
 			 int x1,y1;
 			SDL_GetMouseState(&x1,&y1);
 			if(x1>initX){
-				//int diff= init_x+width
 				x=min(initX,x1-width);
-			   // y=max(20-height,y1-height);
 			    cueShift= MAX_CUE_SHIFT*(initX+width-x1)/width;
 			    if(cueShift<0)cueShift=0;
 			}

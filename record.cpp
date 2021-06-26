@@ -114,11 +114,9 @@ void initRecord(char path[],int neutralDuration){
 
 void insertRecord(int pos,char name[],char durationText[],int duration){
 	for(int recId=LEADERBOARD_SIZE-1;recId>pos;recId--){
-		//rec_data[rec_id]={rec_data[rec_id-1].name,rec_data[rec_id-1].duration_text,rec_data[rec_id-1].duration};
 		recData[recId].assign(recData[recId-1]);
 	}
-	//Record cur={name,duration_text,duration};
-	//rec_data[pos].assign(cur);
+
 	int len=0;
 	while(name[len]){
 		recData[pos].name[len]=name[len];

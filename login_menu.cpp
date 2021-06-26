@@ -86,8 +86,7 @@ void initAllLoginMenu(){
 }
 
 void handleEventLoginMenu(SDL_Event& e){
-	//textbox.handle_event(e);
-//	textbox2.handle_event(e);
+
 	for(int i=0;i<2;i++){
 		int curId= i^userToggle;
 		if(userState[curId]==INITIAL_STATE){
@@ -121,7 +120,6 @@ void handleEventLoginMenu(SDL_Event& e){
 				else if(enterButton[i].isMouseInside()){
 					if(strCompare(usernameInput[curId].inputText,userHandle[curId^1])!=0){
 						int response= authenticate(usernameInput[curId].inputText,passwordInput[curId].inputText,userId[curId]);
-						printf("RES %d\n",response);
 						if(response==-1){
 							userLogResponse[curId]=F_HANDLE_NOT_FOUND;
 							textTimer[curId]=MAX_TIMER;
@@ -163,7 +161,6 @@ void handleEventLoginMenu(SDL_Event& e){
 				}
 				else if(createButton[i].isMouseInside()){
 					int response= addUser(usernameInput[curId].inputText,passwordInput[curId].inputText);
-					printf("RES %d\n",response);
 					if(response==1){
 						userState[curId]=READY_STATE;
 						userId[curId]=totalUsers-1;
@@ -243,23 +240,13 @@ void renderAllLoginMenu(){
 	SDL_Color textColor = { 0xFF, 0xFF, 0xFF, 0xFF };
 	SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 	SDL_RenderClear( gRenderer );
-	//printf("%d\n",user1_state);
 
 	gLoginBackgroundTexture.render(0,0);
-
-
-	//login_button1.render(gRectButtonLoginTexture,1);
-	//login_button2.render(gRectButtonLoginTexture,1);
-	//register_button1.render(gRectButtonRegisterTexture,1);
-	//register_button2.render(gRectButtonRegisterTexture,1);
-	//back_button.render(gRectButtonBackTexture,1);
-
 	changeSidesButton.render(gRectButtonChangeSidesTexture,1);
 	int textBoxX[2]= {98,830};
 
 	for(int i=0;i<2;i++){
 		int curId=i^userToggle;
-		//if(i)text_box_x= 900;
 		if(userState[curId]==INITIAL_STATE){
 			playAsGuestButton[i].render(gRectButtonPlayAsGuestTexture,1);
 			loginButton[i].render(gRectButtonLoginTexture,1);

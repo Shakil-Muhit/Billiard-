@@ -89,14 +89,6 @@ void initUser(){
     }
 
     SDL_Color textColor = { 0xFF, 0xFF, 0xFF, 0xFF };
-
-    ////Initialize data textures
-    //for( int i = 0; i < LEADERBOARD_SIZE; ++i )
-    //{
-        //gRecordNameTexture[ i ].loadFromRenderedText( rec_data[ i ].name, textColor, gFont );
-		//gRecordDurationTexture[ i ].loadFromRenderedText( rec_data[ i ].duration_text, textColor, gFont );
-    //}
-
 }
 
 int addUser(char username[],char pass[]){

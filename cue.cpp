@@ -31,7 +31,6 @@ void Cue::init(int i1,int i2,point c){
 	rb=tovec(origin,rightBottom);
 	point rightMid={(rightBottom.x+rightTop.x)/2,(rightBottom.y+rightTop.y)/2};
 	currentDirection=tovec(rightMid,origin);
-	printf("HHB %lf %lf %lf %lf\n",rightMid.x,rightMid.y,origin.x,origin.y);
 	currentLb=leftBottom;
 	cueShift=0;
 }
@@ -83,14 +82,6 @@ void Cue::handleEvent(SDL_Event& e){
 			point p1(x,y),p0(x+width/2,y+height/2),p2(x1,y1);
 			double radAngle=getAngleClockwise(p1,p0,p2);
 			angle= RadToDegree(radAngle);
-			printf("ANGLE :%lf\n",angle);
-			printf("LEFT BOTTOM: %lf %lf\n",leftBottom.x,leftBottom.y);
-			printf("LEFT TOP: %lf %lf\n",leftTop.x,leftTop.y);
-			printf("RIGHT TOP: %lf %lf\n",rightTop.x,rightTop.y);
-			printf("RIGHT BOTTOM: %lf %lf\n",rightBottom.x,rightBottom.y);
-			printf("DIRECTION: %lf %lf\n",currentDirection.x,currentDirection.y);
-			printf("\n\n\n");
-
 			rotatePoints(radAngle);
 		}
 	}

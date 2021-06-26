@@ -141,12 +141,6 @@ void LTexture::free()
 	}
 }
 
-//void LTexture::setColor( Uint8 red, Uint8 green, Uint8 blue )
-//{
-	////Modulate texture rgb
-	//SDL_SetTextureColorMod( mTexture, red, green, blue );
-//}
-
 void LTexture::setBlendMode( SDL_BlendMode blending )
 {
 	//Set blending function
@@ -407,21 +401,6 @@ bool loadMedia()
     }
     else
     {
-        //Render text
-        //SDL_Color textColor = { 0, 0, 0 };
-        //if( !gTextPlayerTexture[0].loadFromRenderedText( player_name[0], textColor, gFont ) )
-        //{
-            //printf( "Failed to render Player 1 text texture!\n" );
-            //success = false;
-        //}
-
-        //if( !gTextPlayerTexture[1].loadFromRenderedText( player_name[1], textColor, gFont ) )
-        //{
-            //printf( "Failed to render Player 2 text texture!\n" );
-            //success = false;
-        //}
-
-
         SDL_Color textColor = { 230, 0, 0 };
         for(int sec=0;sec<=60;sec++){
             char curSec[5];

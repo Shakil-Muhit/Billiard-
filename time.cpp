@@ -93,13 +93,12 @@ void loadAndRenderElapsedTime(){
 	char tmp[20];
 	strAssign(tmp,curTime);
 	zeroPadTime(tmp);
-	//printf("%s\n",tmp);
 
 	if(milliSecs<1000){
 		curTime[0]='0';
 		curTime[1]='\0';
 	}
-	//gFont = TTF_OpenFont( "fonts/Lato-Italic.ttf", 32 );
+
 	SDL_Color textColor = { 230, 0, 0 };
 	gTextElapsedTimeTexture.loadFromRenderedText( curTime, textColor,gFont );
 	gTextElapsedTimeTexture.render(147+367+(gTimerTexture.getWidth()-gTextElapsedTimeTexture.getWidth())/2,72+(gTimerTexture.getHeight()-gTextElapsedTimeTexture.getHeight())/2);
@@ -110,16 +109,14 @@ void loadAndRenderRemainingTime(int totalTime){
 	char curTime[20];
 	int milliSecs=totalTime-timer.getTicks();
 	milliSecs=max(0,milliSecs);
-	//printf("DONE %d LEFT %d\n",timer.getTicks(),milli_secs);
 
-	//format_time(cur_time,milli_secs);
 	toString(milliSecs/1000,curTime);
 
 	if(milliSecs<1000){
 		curTime[0]='0';
 		curTime[1]='\0';
 	}
-	//gFont = TTF_OpenFont( "fonts/Lato-Italic.ttf", 32 );
+
 	SDL_Color textColor = { 230, 0, 0 };
 	gTextElapsedTimeTexture.loadFromRenderedText( curTime, textColor, gFont );
 	gTextElapsedTimeTexture.render(147+367+(gTimerTexture.getWidth()-gTextElapsedTimeTexture.getWidth())/2,72+(gTimerTexture.getHeight()-gTextElapsedTimeTexture.getHeight())/2);

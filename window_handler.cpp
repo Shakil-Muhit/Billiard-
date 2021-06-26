@@ -180,7 +180,6 @@ void handleEventWindowHandler(SDL_Event& e){
 		}
 		handleEvent8ball(e);
 	}
-	//if(window_mode==5||prev_window_mode==5)printf("Mode %d %d\n",window_mode,prev_window_mode);
 }
 
 void renderAllWindowHandler(){

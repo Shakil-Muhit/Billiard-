@@ -16,7 +16,6 @@
 #include "include/table.h"
 #include "include/button.h"
 
-//static char player1[20],player2[20],won[10]=" Won!!!";
 extern TTF_Font *gFont;
 
 extern Ball ball[16];

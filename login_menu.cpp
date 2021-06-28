@@ -188,8 +188,8 @@ void handleEventLoginMenu(SDL_Event& e){
 				if(e.type==SDL_MOUSEBUTTONDOWN){
 					if(backButton[i].isMouseInside()){
 						userState[curId]= INITIAL_STATE;
-						if(i)strAssign(userHandle[i],guest2);
-						else strAssign(userHandle[i],guest1);
+						if(i)strAssign(userHandle[curId],guest2);
+						else strAssign(userHandle[curId],guest1);
 					}
 				}
 			}
@@ -198,8 +198,8 @@ void handleEventLoginMenu(SDL_Event& e){
 					if(logoutButton[i].isMouseInside()){
 						userState[curId]= INITIAL_STATE;
 						userId[curId]= DEFAULT_USER_ID;
-						if(i)strAssign(userHandle[i],guest2);
-						else strAssign(userHandle[i],guest1);
+						if(i)strAssign(userHandle[curId],guest2);
+						else strAssign(userHandle[curId],guest1);
 					}
 				}
 			}
